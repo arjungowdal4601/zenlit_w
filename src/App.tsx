@@ -18,6 +18,7 @@ import { transformProfileToUser } from '../lib/utils';
 import { usePWA } from './hooks/usePWA';
 import { PWAInstallPrompt } from './components/PWAInstallPrompt';
 import { OfflineIndicator } from './components/OfflineIndicator';
+import { useFirebaseMessaging } from './hooks/useFirebaseMessaging';
 
 export default function App() {
   const [currentScreen, setCurrentScreen] = useState<'welcome' | 'login' | 'profileSetup' | 'app'>('welcome');
@@ -37,7 +38,10 @@ export default function App() {
   // PWA hooks
   const { isInstallable, isOffline, installApp, showInstallPrompt, dismissInstallPrompt } = usePWA();
 
-  // Ensure we're on the client side before doing anything
+
+    // FCM push notification hook
+  const fcmToken = useFirebaseMessaging();
+// Ensure we're on the client side before doing anything
   useEffect(() => {
     setIsClient(true);
     
