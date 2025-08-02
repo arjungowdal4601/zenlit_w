@@ -25,3 +25,4 @@ onBackgroundMessage(messaging, (payload) => {
     icon: icon || '/icons/icon-192.png',
   });
 });
+// End of Firebase Messaging Service Worker
